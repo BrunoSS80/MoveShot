@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyMoviment : MonoBehaviour
@@ -9,6 +10,7 @@ public class EnemyMoviment : MonoBehaviour
     private Rigidbody2D enemyRB;
     private SpriteRenderer spriteRenderer;
     public DetectionController detectionController;
+    
 
     // Start is called before the first frame update
     void Start() {
@@ -22,9 +24,11 @@ public class EnemyMoviment : MonoBehaviour
     }
 
     private void FixedUpdate() {
+        
         enemydirection = (detectionController.detectedObj[0].transform.position - transform.position).normalized;
 
         enemyRB.MovePosition(enemyRB.position + enemydirection * speedEnemy * Time.fixedDeltaTime);
+        
 
         if(enemydirection.x > 0){
             spriteRenderer.flipX = false;

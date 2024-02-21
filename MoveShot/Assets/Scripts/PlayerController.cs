@@ -20,33 +20,26 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Vector3 mousePos = Input.mousePosition;
+        mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+        Vector2 direction = new Vector2(mousePos.x - transform.position.x, mousePos.y - transform.position.y);
+        
+
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
         moveDirection = new Vector2(horizontal, vertical);
         
-        if(moveDirection.sqrMagnitude > 0){
-            playerAnimator.SetInteger("Movimento", 1);
-        }
-        else{
-            playerAnimator.SetInteger("Movimento", 0);
-        }
-
-        Flip();
+        
+        playerAnimator.SetFloat("Horizontal", direction.x);
+        playerAnimator.SetFloat("Vertical", direction.y);
+        playerAnimator.SetFloat("Speed", moveDirection.sqrMagnitude);
+        
     }
 
     private void FixedUpdate() {
         Vector3 movePosition = (speed * Time.fixedDeltaTime * moveDirection) + rb.position;
 
         rb.MovePosition(movePosition);
-    }
-
-    void Flip(){
-        if(moveDirection.x > 0){
-            transform.eulerAngles = new Vector2(0f, 0f);
-        }
-        else if(moveDirection.x < 0){
-            transform.eulerAngles = new Vector2(0f, 180f);
-        }
     }
 }

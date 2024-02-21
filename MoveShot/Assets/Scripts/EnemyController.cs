@@ -1,0 +1,29 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class EnemyController : MonoBehaviour
+{
+    private SpriteRenderer spriteRenderer;
+    public int heath;
+    // Start is called before the first frame update
+    void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    public void DamageEnemy(int damageBullet){
+        heath -= damageBullet;
+        StartCoroutine(Damage());
+
+        if(heath < 1){
+            Destroy(gameObject);
+        }
+    }
+
+    IEnumerator Damage(){
+        spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(0.4f);
+        spriteRenderer.color = Color.white;
+    }
+}
