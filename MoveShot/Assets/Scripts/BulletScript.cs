@@ -6,7 +6,6 @@ public class BulletScript : MonoBehaviour
 {
     public float lifeTime;
     public float bulletSpeed;
-
     public int damageBullet;
 
     // Start is called before the first frame update

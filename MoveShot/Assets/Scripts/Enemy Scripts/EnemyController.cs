@@ -23,7 +23,7 @@ public class EnemyController : MonoBehaviour
 
     IEnumerator Damage(){
         spriteRenderer.color = Color.red;
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(0.2f);
         spriteRenderer.color = Color.white;
     }
 }
