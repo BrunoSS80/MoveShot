@@ -8,10 +8,15 @@ public class EM_BulletScript : MonoBehaviour
     public float bulletSpeed;
     public int em_DamageBullet;
 
+    private BoxCollider2D em_BulletColider;
+
     // Start is called before the first frame update
     void Start()
     {
         Destroy(gameObject, lifeTime);
+        em_BulletColider = GetComponent<BoxCollider2D>();
+
+        Physics2D.IgnoreLayerCollision(7,7,true);
     }
 
     // Update is called once per frame
