@@ -7,17 +7,20 @@ public class BulletScript : MonoBehaviour
     public float lifeTime;
     public float bulletSpeed;
     public int damageBullet;
+    private Animator bulletAnimator;
 
     // Start is called before the first frame update
     void Start()
     {
         Destroy(gameObject, lifeTime);
+        bulletAnimator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
         transform.Translate(Vector2.right * bulletSpeed * Time.deltaTime);
+        bulletAnimator.SetTrigger("Fire");
     }
 
     void OnTriggerEnter2D(Collider2D other) {

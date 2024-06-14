@@ -9,20 +9,22 @@ public class EM_BulletScript : MonoBehaviour
     public int em_DamageBullet;
 
     private BoxCollider2D em_BulletColider;
+    private Animator em_BulletAnimator;
 
     // Start is called before the first frame update
     void Start()
     {
         Destroy(gameObject, lifeTime);
         em_BulletColider = GetComponent<BoxCollider2D>();
-
-        Physics2D.IgnoreLayerCollision(7,7,true);
+        Physics2D.IgnoreLayerCollision(6,6,true);
+        em_BulletAnimator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
         transform.Translate(Vector2.left * bulletSpeed * Time.deltaTime);
+        em_BulletAnimator.SetTrigger("Fire");
     }
 
     void OnTriggerEnter2D(Collider2D other) {
