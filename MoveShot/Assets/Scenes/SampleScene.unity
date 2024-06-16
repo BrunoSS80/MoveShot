@@ -12082,6 +12082,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.008
       objectReference: {fileID: 0}
+    - target: {fileID: 1734758685272297955, guid: f9a528b937079824d869048003beecbb, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1310568135}
     - target: {fileID: 1902743263054851968, guid: f9a528b937079824d869048003beecbb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.68
@@ -12136,7 +12140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6341293754644950634, guid: f9a528b937079824d869048003beecbb, type: 3}
       propertyPath: m_Radius
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6441712718554831707, guid: f9a528b937079824d869048003beecbb, type: 3}
       propertyPath: m_Size.x
