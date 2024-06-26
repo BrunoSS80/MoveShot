@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -6,7 +7,7 @@ using UnityEngine;
 public class EnemyMoviment : MonoBehaviour
 {
     public float speedEnemy = 3.5f;
-    public float distanceDash = 10.0f;
+    public float distanceDash = 0.5f;
     private Vector2 enemydirection;
     private Rigidbody2D enemyRB;
     private SpriteRenderer spriteRenderer;
@@ -30,10 +31,6 @@ public class EnemyMoviment : MonoBehaviour
         //enemydirection = (detectionController.detectedObj[0].transform.position - transform.position).normalized;
         enemydirection = (player.transform.position - transform.position).normalized;
         enemyRB.MovePosition(enemyRB.position + enemydirection * speedEnemy * Time.fixedDeltaTime);
-        
-        if(player.transform.position == transform.position){
-            Debug.Log("parou");
-        }
 
         if(enemydirection.x > 0){
             spriteRenderer.flipX = false;
@@ -43,13 +40,18 @@ public class EnemyMoviment : MonoBehaviour
         }
     }
 
+    
     public void VoarPlayer(){
         StartCoroutine(Espera());
-        //transform.position += (Vector3)enemydirection * distanceDash;
     }
     IEnumerator Espera(){
-        transform.position += transform.position * 0;
-        yield return new WaitForSeconds(5.0f);
-        transform.position = player.transform.position;
+        speedEnemy = 0;
+        yield return new WaitForSeconds(3.0f);
+        Vector2 playerPos = player.transform.position;
+        yield return new WaitForSeconds(0.5f);
+        transform.position = Vector2.MoveTowards(transform.position, playerPos, distanceDash / 0.5f);
+        speedEnemy = 3.5f;
+        Debug.Log("Foi");
     }
+    
 }
