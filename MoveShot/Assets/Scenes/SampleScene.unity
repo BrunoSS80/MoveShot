@@ -4978,13 +4978,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1358124099}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: -0.39999998, y: -0.86000013, z: 0.003149358}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -0.8299999, y: -0.01999998, z: 0.003149358}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 130845155}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!212 &1358124101
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5026,7 +5026,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 6
-  m_Sprite: {fileID: 1742927278, guid: c467e12c888ca2847979f3510a89ff0d, type: 3}
+  m_Sprite: {fileID: -1033414825, guid: c467e12c888ca2847979f3510a89ff0d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -12043,13 +12043,17 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1310568135}
+    - target: {fileID: 1734758685272297955, guid: f9a528b937079824d869048003beecbb, type: 3}
+      propertyPath: speedEnemy
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1902743263054851968, guid: f9a528b937079824d869048003beecbb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.52
+      value: 8.61
       objectReference: {fileID: 0}
     - target: {fileID: 1902743263054851968, guid: f9a528b937079824d869048003beecbb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.62
+      value: -2.91
       objectReference: {fileID: 0}
     - target: {fileID: 1902743263054851968, guid: f9a528b937079824d869048003beecbb, type: 3}
       propertyPath: m_LocalPosition.z
