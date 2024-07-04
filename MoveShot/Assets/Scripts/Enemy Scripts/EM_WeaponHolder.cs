@@ -9,7 +9,11 @@ public class EM_WeaponHolder : MonoBehaviour
     
     public Transform alvo;
     
+    private void Start() {
 
+        alvo = GameObject.Find("Player").GetComponent<Transform>();   
+        
+    }
     // Update is called once per frame
     void Update()
     {

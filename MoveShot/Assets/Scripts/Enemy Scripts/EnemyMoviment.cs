@@ -19,6 +19,7 @@ public class EnemyMoviment : MonoBehaviour
     void Start() {
         enemyRB = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        player = GameObject.Find("Player").GetComponent<Transform>();
     }
     // Update is called once per frame
     void Update()

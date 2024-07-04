@@ -8,6 +8,11 @@ public class ArrowRotation : MonoBehaviour
     public Transform enemy, player;
     public float timeOn = 3.5f;
     public float offset;
+    
+    private void Start() {
+        player = GameObject.Find("Player").GetComponent<Transform>();
+    }
+
     void Update()
     {
         ArrowFPlayer();
