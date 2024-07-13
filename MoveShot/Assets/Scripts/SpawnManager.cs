@@ -7,6 +7,7 @@ public class SpawnManager : MonoBehaviour
     public Collider2D boxCollider;
     public GameObject[] enemys;
     private int numEnemys;
+    public List<GameObject> enemysList = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
     {
@@ -24,13 +25,12 @@ public class SpawnManager : MonoBehaviour
     }
 
     void SpawnEnemys(){
-        numEnemys = Random.Range(3, 9);
-        
+        numEnemys = Random.Range(3, 4);
         for(int i = 0; i < numEnemys; i++){
             Vector2 position = SpawnPos();
             int index = Random.Range(0, enemys.Length);
-            Instantiate(enemys[index], position, enemys[index].transform.rotation);
+            var spawnEnemys = Instantiate(enemys[index], position, enemys[index].transform.rotation);
+            enemysList.Add(spawnEnemys);
         }
-
     }
 }

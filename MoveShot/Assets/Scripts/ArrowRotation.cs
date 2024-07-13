@@ -8,15 +8,24 @@ public class ArrowRotation : MonoBehaviour
     public Transform enemy, player;
     public float timeOn = 3.5f;
     public float offset;
+    public SpriteRenderer spriteArrow;
     
     private void Start() {
         player = GameObject.Find("Player").GetComponent<Transform>();
+        spriteArrow = GetComponentInChildren<SpriteRenderer>();
     }
 
     void Update()
     {
         ArrowFPlayer();
     }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.gameObject.tag == player.tag){
+            SpriteOn();
+        }
+    }
+
 
     private void ArrowFPlayer(){
         //Roração
@@ -36,8 +45,8 @@ public class ArrowRotation : MonoBehaviour
     }
 
     IEnumerator Duration(){
-        GetComponent<SpriteRenderer>().enabled = true;
+        spriteArrow.enabled = true;
         yield return new WaitForSeconds(timeOn);
-        GetComponent<SpriteRenderer>().enabled = false;
+        spriteArrow.enabled = false;
     }
 }

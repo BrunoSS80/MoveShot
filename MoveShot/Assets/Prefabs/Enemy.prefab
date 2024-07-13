@@ -189,7 +189,7 @@ MonoBehaviour:
   speedEnemy: 0
   distanceDash: 10
   detectionController: {fileID: 685450120822687893}
-  player: {fileID: 0}
+  player: {fileID: 8268729251186405905, guid: f38bf7d46cd9fe64aa235754853c608b, type: 3}
 --- !u!114 &5860994697803381902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,7 +333,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 1902743263054851968}
   offset: 0
-  alvo: {fileID: 0}
+  alvo: {fileID: 8268729251186405905, guid: f38bf7d46cd9fe64aa235754853c608b, type: 3}
 --- !u!1 &3493481342787211487
 GameObject:
   m_ObjectHideFlags: 0
@@ -603,7 +603,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   barrel: {fileID: 4232034232815429378}
-  fireRate: 1
+  fireRate: 99
   bullet: {fileID: 1476181432565153545, guid: ea02e8e8a111d9d478d8d26a95e7a91c, type: 3}
 --- !u!1 &8944390530099025148
 GameObject:
@@ -616,7 +616,8 @@ GameObject:
   - component: {fileID: 3253340625780985649}
   - component: {fileID: 1657773154047077774}
   - component: {fileID: 7033862226777897768}
-  m_Layer: 0
+  - component: {fileID: 6451087070707607979}
+  m_Layer: 6
   m_Name: ArrowToPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -632,7 +633,7 @@ Transform:
   m_GameObject: {fileID: 8944390530099025148}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -1.85, y: -0, z: 0.003149358}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 3, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -703,6 +704,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 1902743263054851968}
-  player: {fileID: 0}
+  player: {fileID: 8268729251186405905, guid: f38bf7d46cd9fe64aa235754853c608b, type: 3}
   timeOn: 3.5
   offset: 2
+  spriteArrow: {fileID: 1657773154047077774}
+--- !u!58 &6451087070707607979
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8944390530099025148}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.000000059604645}
+  serializedVersion: 2
+  m_Radius: 0.35

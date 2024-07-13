@@ -40,7 +40,6 @@ public class EnemyMoviment : MonoBehaviour
             spriteRenderer.flipX = true;
         }
     }
-
     
     public void VoarPlayer(){
         StartCoroutine(Espera());
