@@ -229,24 +229,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dampTime: 0.15
   objetoParaSeguir: {fileID: 1310568135}
---- !u!1 &796978225 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5223271609404968282, guid: f38bf7d46cd9fe64aa235754853c608b, type: 3}
-  m_PrefabInstance: {fileID: 3992434955840271251}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &796978228
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 796978225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b0d71b7ee3ab8f48a2a74ecb93806cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyEye: Enemy
 --- !u!1 &1166970576
 GameObject:
   m_ObjectHideFlags: 0
@@ -4710,6 +4692,7 @@ MonoBehaviour:
   boxCollider: {fileID: 1344769955}
   enemys:
   - {fileID: 1998495899012962316, guid: f9a528b937079824d869048003beecbb, type: 3}
+  enemysList: []
 --- !u!61 &1344769955
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4722,10 +4705,10 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -11854,12 +11837,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5223271609404968282, guid: f38bf7d46cd9fe64aa235754853c608b, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5223271609404968282, guid: f38bf7d46cd9fe64aa235754853c608b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 796978228}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f38bf7d46cd9fe64aa235754853c608b, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

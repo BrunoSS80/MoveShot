@@ -1,6 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using System.Text;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.Diagnostics;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,17 +16,40 @@ public class PlayerController : MonoBehaviour
     private Animator playerAnimator;
     public int heath;
     private SpriteRenderer spriteRenderer;
-    // Start is called before the first frame update
+    public float rollSpeed = 100f;
+    private Vector3 rollDir;
+    private enum State{
+        Normal,
+        Rolling,
+    }
+    private State state;
     
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         playerAnimator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        state = State.Normal;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+    private void FixedUpdate() {
+        switch(state){
+            case State.Normal:
+            WalkPlayer();
+            MovePlayerDir();
+            ActiveRoll();
+            break;
+            
+            case State.Rolling:
+            RollingPL();
+            break;
+        }
+    }
+
+    private void WalkPlayer(){
+        Vector3 movePosition = (speed * Time.fixedDeltaTime * moveDirection) + rb.position;
+        rb.MovePosition(movePosition);
+    }
+    public void MovePlayerDir(){
         Vector3 mousePos = Input.mousePosition;
         mousePos = Camera.main.ScreenToWorldPoint(mousePos);
         Vector2 direction = new Vector2(mousePos.x - transform.position.x, mousePos.y - transform.position.y);
@@ -33,17 +60,9 @@ public class PlayerController : MonoBehaviour
 
         moveDirection = new Vector2(horizontal, vertical);
         
-        
         playerAnimator.SetFloat("Horizontal", direction.x);
         playerAnimator.SetFloat("Vertical", direction.y);
         playerAnimator.SetFloat("Speed", moveDirection.sqrMagnitude);
-        
-    }
-
-    private void FixedUpdate() {
-        Vector3 movePosition = (speed * Time.fixedDeltaTime * moveDirection) + rb.position;
-
-        rb.MovePosition(movePosition);
     }
 
     public void DamagePlayer(int em_damageBullet){
@@ -58,5 +77,20 @@ public class PlayerController : MonoBehaviour
         spriteRenderer.color = Color.red;
         yield return new WaitForSeconds(0.2f);
         spriteRenderer.color = Color.white;
+    }
+
+    public void ActiveRoll(){
+        if(Input.GetMouseButtonDown(1)) {
+            Vector3 mousePos = Input.mousePosition;
+            rollDir = (Camera.main.ScreenToWorldPoint(mousePos) - transform.position).normalized;
+            state = State.Rolling;
+        }
+    }
+    private void RollingPL(){
+        transform.position += rollDir * rollSpeed * Time.deltaTime;
+        //rollSpeed -= rollSpeed * 10 * Time.deltaTime;
+        state = State.Normal;
+        //if(rollSpeed < 5){   
+        //}
     }
 }
