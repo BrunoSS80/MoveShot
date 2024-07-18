@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text;
 using UnityEditor.Experimental.GraphView;
@@ -31,16 +32,22 @@ public class PlayerController : MonoBehaviour
         state = State.Normal;
     }
 
-    private void FixedUpdate() {
+    private void Update() {
         switch(state){
             case State.Normal:
             WalkPlayer();
-            MovePlayerDir();
             ActiveRoll();
             break;
             
             case State.Rolling:
             RollingPL();
+            break;
+        }
+    }
+    private void FixedUpdate() {
+        switch(state){
+            case State.Normal:
+            MovePlayerDir();
             break;
         }
     }
@@ -80,17 +87,25 @@ public class PlayerController : MonoBehaviour
     }
 
     public void ActiveRoll(){
-        if(Input.GetMouseButtonDown(1)) {
+        if(Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Space)){
             Vector3 mousePos = Input.mousePosition;
             rollDir = (Camera.main.ScreenToWorldPoint(mousePos) - transform.position).normalized;
+            rollSpeed = 50;
+            playerAnimator.SetTrigger("Roll");
             state = State.Rolling;
         }
     }
     private void RollingPL(){
         transform.position += rollDir * rollSpeed * Time.deltaTime;
-        //rollSpeed -= rollSpeed * 10 * Time.deltaTime;
+        rollSpeed -= rollSpeed * 10 * Time.deltaTime;
+        if(rollSpeed <= 5){
+        float collDownRoll = 0.5f;
+        StartCoroutine(CollDown(collDownRoll));
+        }
+    }
+
+    IEnumerator CollDown(float timeToWait){
+        yield return new WaitForSeconds(timeToWait);
         state = State.Normal;
-        //if(rollSpeed < 5){   
-        //}
     }
 }
