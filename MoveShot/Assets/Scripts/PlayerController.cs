@@ -88,10 +88,12 @@ public class PlayerController : MonoBehaviour
 
     public void ActiveRoll(){
         if(Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Space)){
+            playerAnimator.SetFloat("Horizontal", 0);
+            playerAnimator.SetFloat("Vertical",0);
+            playerAnimator.SetTrigger("Roll");
             Vector3 mousePos = Input.mousePosition;
             rollDir = (Camera.main.ScreenToWorldPoint(mousePos) - transform.position).normalized;
             rollSpeed = 50;
-            playerAnimator.SetTrigger("Roll");
             state = State.Rolling;
         }
     }
@@ -105,7 +107,10 @@ public class PlayerController : MonoBehaviour
     }
 
     IEnumerator CollDown(float timeToWait){
+        playerAnimator.SetFloat("Horizontal", 1);
+        playerAnimator.SetFloat("Vertical",1);
         yield return new WaitForSeconds(timeToWait);
+        transform.position = new Vector3(transform.position.x, transform.position.y , 0);
         state = State.Normal;
     }
 }

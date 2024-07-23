@@ -25,7 +25,7 @@ public class SpawnManager : MonoBehaviour
     }
 
     void SpawnEnemys(){
-        numEnemys = Random.Range(3, 4);
+        numEnemys = Random.Range(0, 1);
         for(int i = 0; i < numEnemys; i++){
             Vector2 position = SpawnPos();
             int index = Random.Range(0, enemys.Length);
