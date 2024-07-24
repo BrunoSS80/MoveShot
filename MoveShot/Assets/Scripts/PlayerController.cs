@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text;
 using UnityEditor.Experimental.GraphView;
@@ -90,9 +89,15 @@ public class PlayerController : MonoBehaviour
         if(Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Space)){
             playerAnimator.SetFloat("Horizontal", 0);
             playerAnimator.SetFloat("Vertical",0);
-            playerAnimator.SetTrigger("Roll");
             Vector3 mousePos = Input.mousePosition;
             rollDir = (Camera.main.ScreenToWorldPoint(mousePos) - transform.position).normalized;
+            Debug.Log(rollDir);
+            if(rollDir.x > 0.01f){
+                playerAnimator.SetTrigger("Roll_Right");
+            }
+            else{
+                playerAnimator.SetTrigger("Roll_Left");
+            }
             rollSpeed = 50;
             state = State.Rolling;
         }
@@ -108,9 +113,8 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator CollDown(float timeToWait){
         playerAnimator.SetFloat("Horizontal", 1);
-        playerAnimator.SetFloat("Vertical",1);
         yield return new WaitForSeconds(timeToWait);
-        transform.position = new Vector3(transform.position.x, transform.position.y , 0);
         state = State.Normal;
+        transform.position = new Vector3(transform.position.x, transform.position.y , 0);
     }
 }
