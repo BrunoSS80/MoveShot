@@ -8,13 +8,22 @@ public class SpawnManager : MonoBehaviour
     public GameObject[] enemys;
     private int numEnemys;
     public List<GameObject> enemysList = new List<GameObject>();
+    public int minEnemys = 3;
+    public int maxEnemys = 5;
+    private bool cleanedRoom = false;
+    private RoomManager roomManager;
+    public bool enemysInvoked = false;
     // Start is called before the first frame update
     void Start()
     {
         boxCollider = GetComponent<Collider2D>();
-        InvokeRepeating("SpawnEnemys", 2, 0);
     }
 
+    private void Update() {
+        if(enemysList.Count == 0){
+            cleanedRoom = true;
+        }
+    }
     Vector2 SpawnPos(){
         //Gerando posição que irá nascer o inimigo
         var bounds = boxCollider.bounds;
@@ -25,12 +34,19 @@ public class SpawnManager : MonoBehaviour
     }
 
     void SpawnEnemys(){
-        numEnemys = Random.Range(0, 1);
+        numEnemys = Random.Range(minEnemys, maxEnemys);
         for(int i = 0; i < numEnemys; i++){
             Vector2 position = SpawnPos();
             int index = Random.Range(0, enemys.Length);
             var spawnEnemys = Instantiate(enemys[index], position, enemys[index].transform.rotation);
             enemysList.Add(spawnEnemys);
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.CompareTag("Player") && cleanedRoom == false && enemysInvoked == false){
+            SpawnEnemys();
+        }
+        enemysInvoked = true;
     }
 }

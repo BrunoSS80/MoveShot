@@ -6,10 +6,12 @@ public class EnemyController : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
     public int heath;
-    // Start is called before the first frame update
+    private SpawnManager spawnManager;
+    
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
     }
 
     public void DamageEnemy(int damageBullet){
@@ -17,6 +19,7 @@ public class EnemyController : MonoBehaviour
         StartCoroutine(Damage());
 
         if(heath < 1){
+            spawnManager.enemysList.RemoveAt(0);
             Destroy(gameObject);
         }
     }
