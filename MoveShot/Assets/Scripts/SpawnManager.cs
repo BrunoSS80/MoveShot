@@ -10,7 +10,7 @@ public class SpawnManager : MonoBehaviour
     public List<GameObject> enemysList = new List<GameObject>();
     public int minEnemys = 3;
     public int maxEnemys = 5;
-    private bool cleanedRoom = false;
+    public bool cleanedRoom = false;
     private RoomManager roomManager;
     public bool enemysInvoked = false;
     // Start is called before the first frame update
@@ -19,8 +19,8 @@ public class SpawnManager : MonoBehaviour
         boxCollider = GetComponent<Collider2D>();
     }
 
-    private void Update() {
-        if(enemysList.Count == 0){
+    private void LateUpdate() {
+        if(enemysList.Count == 0 && enemysInvoked == true){
             cleanedRoom = true;
         }
     }
