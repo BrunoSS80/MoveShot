@@ -22,4 +22,5 @@ public class Room : MonoBehaviour
             rightDoor.SetActive(true);
         }
     }
+
 }

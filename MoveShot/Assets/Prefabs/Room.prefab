@@ -143,7 +143,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a99443e994c6d744695659044a49fc3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkTo: {x: -300, y: 0, z: 0}
+  walkTo: {x: -10, y: 0, z: 0}
+  animatorPanel: {fileID: 0}
 --- !u!1 &2155132848740729187
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,7 +288,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a99443e994c6d744695659044a49fc3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkTo: {x: 0, y: -300, z: 0}
+  walkTo: {x: 0, y: -10, z: 0}
+  animatorPanel: {fileID: 0}
 --- !u!1 &2803972240278522408
 GameObject:
   m_ObjectHideFlags: 0
@@ -743,8 +745,8 @@ MonoBehaviour:
   enemys:
   - {fileID: 1998495899012962316, guid: f9a528b937079824d869048003beecbb, type: 3}
   enemysList: []
-  minEnemys: 3
-  maxEnemys: 5
+  minEnemys: 0
+  maxEnemys: 0
   cleanedRoom: 0
   enemysInvoked: 0
 --- !u!1 &5559570846301778590
@@ -3806,7 +3808,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a99443e994c6d744695659044a49fc3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkTo: {x: 0, y: 300, z: 0}
+  walkTo: {x: 0, y: 10, z: 0}
+  animatorPanel: {fileID: 0}
 --- !u!1 &9032857023224107712
 GameObject:
   m_ObjectHideFlags: 0
@@ -4319,7 +4322,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a99443e994c6d744695659044a49fc3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkTo: {x: 300, y: 0, z: 0}
+  walkTo: {x: 10, y: 0, z: 0}
+  animatorPanel: {fileID: 0}
 --- !u!1 &9215610889134461952
 GameObject:
   m_ObjectHideFlags: 0
