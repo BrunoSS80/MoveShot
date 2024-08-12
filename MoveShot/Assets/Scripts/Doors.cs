@@ -6,9 +6,9 @@ using UnityEngine;
 public class Doors : MonoBehaviour
 {
     private Transform player;
-    public Vector3 walkTo;
     private float durationWalk = 5;
     public Animator animatorPanel;
+    public float valorX, valorY;
 
     private void Start() {
         player = GameObject.Find("Player").GetComponent<Transform>();
@@ -24,7 +24,9 @@ public class Doors : MonoBehaviour
     IEnumerator ChangeTimer(){
         animatorPanel.SetBool("FadeIn", true);
         yield return new WaitForSeconds(1);
-        player.transform.position = Vector2.Lerp(player.transform.position, walkTo, durationWalk);
+        Debug.Log(player.transform.position);
+        player.transform.position = Vector2.Lerp(player.transform.position, player.transform.position + new Vector3(valorX, valorY), durationWalk);
+        Debug.Log(player.transform.position);
         animatorPanel.SetBool("FadeOut", true);
         yield return new WaitForSeconds(1);
         animatorPanel.SetBool("FadeIn", false);
