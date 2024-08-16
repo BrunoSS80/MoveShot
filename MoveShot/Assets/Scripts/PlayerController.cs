@@ -16,8 +16,12 @@ public class PlayerController : MonoBehaviour
     private Animator playerAnimator;
     public int heath;
     private SpriteRenderer spriteRenderer;
-    public float rollSpeed = 100f;
+    public float rollSpeed = 75f;
     private Vector3 rollDir;
+    private float coolDownRoll = 3f;
+    private float resetRoll = 3f;
+    private bool canRoll = true;
+    public bool canMove = true;
     private enum State{
         Normal,
         Rolling,
@@ -32,22 +36,35 @@ public class PlayerController : MonoBehaviour
     }
 
     private void Update() {
-        switch(state){
-            case State.Normal:
-            WalkPlayer();
-            ActiveRoll();
-            break;
+        if(canMove == true){
+            switch(state){
+                case State.Normal:
+                WalkPlayer();
+                ActiveRoll();
+                break;
+            }
+            switch(state){
+                case State.Rolling:
+                RollingPL();
+                break;
+            }
+        }
+        if(canRoll == false){
+            coolDownRoll -= Time.deltaTime;
             
-            case State.Rolling:
-            RollingPL();
-            break;
+            if(coolDownRoll <= 0){
+                coolDownRoll = resetRoll;
+                canRoll = true;
+            }
         }
     }
     private void FixedUpdate() {
-        switch(state){
-            case State.Normal:
-            MovePlayerDir();
-            break;
+        if(canMove == true){
+            switch(state){
+                case State.Normal:
+                MovePlayerDir();
+                break;
+            }
         }
     }
 
@@ -86,35 +103,31 @@ public class PlayerController : MonoBehaviour
     }
 
     public void ActiveRoll(){
-        if(Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Space)){
-            playerAnimator.SetFloat("Horizontal", 0);
-            playerAnimator.SetFloat("Vertical",0);
-            Vector3 mousePos = Input.mousePosition;
-            rollDir = (Camera.main.ScreenToWorldPoint(mousePos) - transform.position).normalized;
-            Debug.Log(rollDir);
-            if(rollDir.x > 0.01f){
-                playerAnimator.SetTrigger("Roll_Right");
+        if(canRoll == true){
+            if(Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Space)){
+                playerAnimator.SetFloat("Horizontal", 0);
+                playerAnimator.SetFloat("Vertical",0);
+                Vector3 mousePos = Input.mousePosition;
+                rollDir = (Camera.main.ScreenToWorldPoint(mousePos) - transform.position).normalized;
+                if(rollDir.x > 0.01f){
+                    playerAnimator.SetTrigger("Roll_Right");
+                }
+                else{
+                    playerAnimator.SetTrigger("Roll_Left");
+                }
+                rollSpeed = 50;
+                state = State.Rolling;
             }
-            else{
-                playerAnimator.SetTrigger("Roll_Left");
-            }
-            rollSpeed = 50;
-            state = State.Rolling;
         }
     }
     private void RollingPL(){
         transform.position += rollDir * rollSpeed * Time.deltaTime;
         rollSpeed -= rollSpeed * 10 * Time.deltaTime;
         if(rollSpeed <= 5){
-        float collDownRoll = 0.5f;
-        StartCoroutine(CollDown(collDownRoll));
-        }
-    }
-
-    IEnumerator CollDown(float timeToWait){
         playerAnimator.SetFloat("Horizontal", 1);
-        yield return new WaitForSeconds(timeToWait);
+        canRoll = false;
         state = State.Normal;
         transform.position = new Vector3(transform.position.x, transform.position.y , 0);
+        }
     }
 }
