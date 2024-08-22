@@ -11,7 +11,7 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
+        spawnManager = GetComponentInChildren<SpawnManager>();
     }
 
     public void DamageEnemy(int damageBullet){

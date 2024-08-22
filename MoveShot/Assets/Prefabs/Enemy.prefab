@@ -162,7 +162,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 7
+  m_SortingOrder: 1
   m_Sprite: {fileID: 1412242536, guid: f96a020f10b256c449a24f5322e7f461, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -603,7 +603,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   barrel: {fileID: 4232034232815429378}
-  fireRate: 99
+  fireRate: 2
   bullet: {fileID: 1476181432565153545, guid: ea02e8e8a111d9d478d8d26a95e7a91c, type: 3}
 --- !u!1 &8944390530099025148
 GameObject:

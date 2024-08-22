@@ -13,10 +13,20 @@ public class SpawnManager : MonoBehaviour
     public bool cleanedRoom = false;
     private RoomManager roomManager;
     public bool enemysInvoked = false;
+    public GameObject[] obstacles;
+    public int minObstacles;
+    public int maxObstacles;
+    private int numObstacles;
     // Start is called before the first frame update
     void Start()
     {
         boxCollider = GetComponent<Collider2D>();
+        StartCoroutine(LateStart(0.1f));
+    }
+    
+    IEnumerator LateStart(float timeWait){
+        yield return new WaitForSeconds(timeWait);
+        SpawnObstacles();
     }
 
     private void LateUpdate() {
@@ -45,8 +55,18 @@ public class SpawnManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.CompareTag("Player") && cleanedRoom == false && enemysInvoked == false){
+            LateStart(1.0f);
             SpawnEnemys();
         }
         enemysInvoked = true;
+    }
+
+    void SpawnObstacles(){
+        numObstacles = Random.Range(minObstacles, maxObstacles);
+        for(int i = 0; i < numObstacles; i++){
+            Vector2 positionObstacles = SpawnPos();
+            int index = Random.Range(0, obstacles.Length);
+            var spawnObstacles = Instantiate(obstacles[index], positionObstacles, obstacles[index].transform.rotation);
+        }
     }
 }
