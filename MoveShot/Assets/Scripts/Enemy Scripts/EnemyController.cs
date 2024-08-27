@@ -6,20 +6,18 @@ public class EnemyController : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
     public int heath;
-    private SpawnManager spawnManager;
     
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        spawnManager = GetComponentInChildren<SpawnManager>();
     }
+
 
     public void DamageEnemy(int damageBullet){
         heath -= damageBullet;
         StartCoroutine(Damage());
 
         if(heath < 1){
-            spawnManager.enemysList.RemoveAt(0);
             Destroy(gameObject);
         }
     }

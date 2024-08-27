@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f0a7048434d8c140bb160454d86e93d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedEnemy: 0
+  speedEnemy: 1
   distanceDash: 10
   detectionController: {fileID: 685450120822687893}
   player: {fileID: 8268729251186405905, guid: f38bf7d46cd9fe64aa235754853c608b, type: 3}
@@ -283,7 +283,7 @@ Rigidbody2D:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!1 &2748644396960456252

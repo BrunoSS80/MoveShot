@@ -17,8 +17,4 @@ public class DetectPlayer : MonoBehaviour
             cameraPlayer.MoveCamera();
         }
     }
-
-    private void OnCollisionStay2D(Collision2D other) {
-        
-    }
 }

@@ -10,6 +10,7 @@ public class Doors : MonoBehaviour
     private float durationWalk = 5;
     public Animator animatorPanel;
     public float valorX, valorY;
+    public DetectEnemy detectEnemy;
 
     private void Start() {
         player = GameObject.Find("Player").GetComponent<Transform>();
@@ -18,7 +19,7 @@ public class Doors : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if(other.CompareTag("Player")){
+        if(other.CompareTag("Player") && detectEnemy.cleanedRoom == true){
             StartCoroutine(ChangeTimer());
         }
     }
