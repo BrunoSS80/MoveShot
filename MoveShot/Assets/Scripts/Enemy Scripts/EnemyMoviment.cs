@@ -27,8 +27,6 @@ public class EnemyMoviment : MonoBehaviour
     }
 
     private void FixedUpdate() {
-        
-        //enemydirection = (detectionController.detectedObj[0].transform.position - transform.position).normalized;
         enemydirection = (player.transform.position - transform.position).normalized;
         enemyRB.MovePosition(enemyRB.position + enemydirection * speedEnemy * Time.fixedDeltaTime);
 

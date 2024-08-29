@@ -385,10 +385,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cleanedRoom: 0
-  topDoor: {fileID: 8225948812555649510}
-  bottomDoor: {fileID: 2155132848740729187}
-  leftDoor: {fileID: 2039849694194459424}
-  rightDoor: {fileID: 9062611613976978983}
 --- !u!1 &2549647044898928126
 GameObject:
   m_ObjectHideFlags: 0
@@ -937,9 +933,9 @@ MonoBehaviour:
   boxCollider: {fileID: 8215003004649167908}
   enemys:
   - {fileID: 1998495899012962316, guid: f9a528b937079824d869048003beecbb, type: 3}
+  - {fileID: 6151260697931637243, guid: 71422ba47091e4643992a1a5eeac6996, type: 3}
   minEnemys: 1
   maxEnemys: 4
-  cleanedRoom: 0
   enemysInvoked: 0
   obstacles:
   - {fileID: 5749942695367145529, guid: 484da83f52d338c44be2fba3299aaa09, type: 3}

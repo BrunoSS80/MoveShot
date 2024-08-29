@@ -18,8 +18,8 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     public float rollSpeed = 75f;
     private Vector3 rollDir;
-    private float coolDownRoll = 3f;
-    private float resetRoll = 3f;
+    public float coolDownRoll = 3f;
+    public float resetRoll = 3f;
     private bool canRoll = true;
     public bool canMove = true;
     private enum State{
@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
         Rolling,
     }
     private State state;
+    public Color colorResetRoll;
     
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
@@ -55,6 +56,7 @@ public class PlayerController : MonoBehaviour
             if(coolDownRoll <= 0){
                 coolDownRoll = resetRoll;
                 canRoll = true;
+                ResetRoll();
             }
         }
     }
@@ -129,5 +131,13 @@ public class PlayerController : MonoBehaviour
         state = State.Normal;
         transform.position = new Vector3(transform.position.x, transform.position.y , 0);
         }
+    }
+    private void ResetRoll(){
+        StartCoroutine(ResetRollC());
+    }
+    IEnumerator ResetRollC(){
+        spriteRenderer.color = colorResetRoll;
+        yield return new WaitForSeconds(0.1f);
+        spriteRenderer.color = Color.white;
     }
 }
