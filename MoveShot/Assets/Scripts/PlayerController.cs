@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField]  
     private float speed = 3;
-
+    private CapsuleCollider2D colliderPlayer;
     private Rigidbody2D rb;
     private Vector2 moveDirection;
     private Animator playerAnimator;
@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         playerAnimator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        colliderPlayer = GetComponent<CapsuleCollider2D>();
         state = State.Normal;
     }
 
@@ -118,6 +119,7 @@ public class PlayerController : MonoBehaviour
                     playerAnimator.SetTrigger("Roll_Left");
                 }
                 rollSpeed = 50;
+                colliderPlayer.enabled = false;
                 state = State.Rolling;
             }
         }
@@ -130,6 +132,7 @@ public class PlayerController : MonoBehaviour
         canRoll = false;
         state = State.Normal;
         transform.position = new Vector3(transform.position.x, transform.position.y , 0);
+        colliderPlayer.enabled = true;
         }
     }
     private void ResetRoll(){

@@ -6,6 +6,8 @@ public class SpawnManager : MonoBehaviour
 {
     public Collider2D boxCollider;
     public GameObject[] enemys;
+    public List<int> enemysAlive;
+    public GameObject roomCurrent;
     private int numEnemys;
     public int minEnemys = 3;
     public int maxEnemys = 5;
@@ -15,6 +17,7 @@ public class SpawnManager : MonoBehaviour
     public int minObstacles;
     public int maxObstacles;
     private int numObstacles;
+    public bool cleanedRoom = false;
     void Start()
     {
         boxCollider = GetComponent<Collider2D>();
@@ -25,7 +28,14 @@ public class SpawnManager : MonoBehaviour
         yield return new WaitForSeconds(timeWait);
         SpawnObstacles();
     }
-
+    private void Update() {
+        if(enemysAlive.Count <= 0){
+            cleanedRoom = true;
+        }
+        else{
+            cleanedRoom = false;
+        }
+    }
     Vector2 SpawnPos(){
         //Gerando posição que irá nascer o inimigo
         var bounds = boxCollider.bounds;
@@ -41,6 +51,7 @@ public class SpawnManager : MonoBehaviour
             Vector2 position = SpawnPos();
             int index = Random.Range(0, enemys.Length);
             var spawnEnemys = Instantiate(enemys[index], position, enemys[index].transform.rotation);
+            enemysAlive.Add(1);
         }
     }
 
@@ -58,6 +69,12 @@ public class SpawnManager : MonoBehaviour
             Vector2 positionObstacles = SpawnPos();
             int index = Random.Range(0, obstacles.Length);
             var spawnObstacles = Instantiate(obstacles[index], positionObstacles, obstacles[index].transform.rotation);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other) {
+        if(other.gameObject.tag == "Enemy"){
+            enemysAlive.Remove(1);
         }
     }
 }
