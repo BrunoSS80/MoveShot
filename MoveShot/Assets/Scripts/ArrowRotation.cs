@@ -20,13 +20,6 @@ public class ArrowRotation : MonoBehaviour
         ArrowFPlayer();
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
-        if(other.gameObject.tag == player.tag){
-            SpriteOn();
-        }
-    }
-
-
     private void ArrowFPlayer(){
         //Roração
         var dir = player.position - transform.position;
