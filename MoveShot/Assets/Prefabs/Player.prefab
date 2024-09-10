@@ -165,7 +165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   heath: 100
-  rollSpeed: 100
+  rollSpeed: 300
   coolDownRoll: 2
   resetRoll: 2
   canMove: 1

@@ -1,25 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class Doors : MonoBehaviour
-{
+public class DoorBoss : MonoBehaviour
+{   
+    public SpawnManager spawnManager;
     private Transform player;
     private PlayerController playerController;
-    private float durationWalk = 5;
     private Animator animatorPanel;
-    public float valorX, valorY;
-    public SpawnManager spawnManager;
 
     private void Start() {
         player = GameObject.Find("Player").GetComponent<Transform>();
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
         animatorPanel = GameObject.Find("Panel").GetComponent<Animator>();
     }
-
     private void OnTriggerEnter2D(Collider2D other) {
-        if(other.CompareTag("Player") && spawnManager.cleanedRoom == true) {
+        if(other.gameObject.CompareTag("Player") && spawnManager.cleanedRoom == true){
             StartCoroutine(ChangeTimer());
         }
     }
@@ -28,7 +24,7 @@ public class Doors : MonoBehaviour
         playerController.canMove = false;
         animatorPanel.SetBool("FadeIn", true);
         yield return new WaitForSeconds(1);
-        player.transform.position = Vector2.Lerp(player.transform.position, player.transform.position + new Vector3(valorX, valorY), durationWalk);
+        player.transform.position = new Vector2(60, 57);
         animatorPanel.SetBool("FadeOut", true);
         yield return new WaitForSeconds(1);
         animatorPanel.SetBool("FadeIn", false);

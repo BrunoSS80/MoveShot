@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-
+using System.Linq;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -9,12 +10,14 @@ public class RoomManager : MonoBehaviour
     [SerializeField] GameObject roomPrefab;
     [SerializeField] private int maxRooms = 15;
     [SerializeField] private int minRooms = 10;
+    [SerializeField] GameObject bossRoom;
 
     int roomWidth = 20;
     int roomHeight = 12;
     int gridSizeX = 10;
     int gridSizeY = 10;
     private List<GameObject> roomObjects = new List<GameObject>();
+    public GameObject lastRoom;
     private Queue<Vector2Int> roomQueue = new Queue<Vector2Int>();
     private int [,] roomGrid;
     private int roomCount;
@@ -25,6 +28,7 @@ public class RoomManager : MonoBehaviour
         roomQueue = new Queue<Vector2Int>();
 
         Vector2Int initialRoomIndex = new Vector2Int(gridSizeX/2, gridSizeY/2);
+        var spawnBossRoom = Instantiate(bossRoom, new Vector2(60, 60), Quaternion.identity);
         StartRoomGenerationFromRoom(initialRoomIndex);
     }
 
@@ -46,10 +50,16 @@ public class RoomManager : MonoBehaviour
         else if(!generationComplete){
             Debug.Log($"Generation complete, {roomCount} rooms created");
             generationComplete = true;
+            BossRoom();
         }
     }
 
-    private void StartRoomGenerationFromRoom( Vector2Int roomIndex){
+    private void BossRoom(){
+        lastRoom = roomObjects.Last();
+        
+    }
+
+    private void StartRoomGenerationFromRoom(Vector2Int roomIndex){
         roomQueue.Enqueue(roomIndex);
         int x = roomIndex.x;
         int y = roomIndex.y;
