@@ -436,6 +436,7 @@ MonoBehaviour:
   bottomDoor: {fileID: 2155132848740729187}
   leftDoor: {fileID: 2039849694194459424}
   rightDoor: {fileID: 9062611613976978983}
+  bossDoor: {fileID: 6699440863132037001}
 --- !u!1 &3085364948694017167
 GameObject:
   m_ObjectHideFlags: 0
@@ -3974,7 +3975,7 @@ Transform:
   m_GameObject: {fileID: 8225948812555649510}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.54, z: 0}
+  m_LocalPosition: {x: 0, y: 4.49, z: 0}
   m_LocalScale: {x: 3, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

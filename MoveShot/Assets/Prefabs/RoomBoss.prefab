@@ -100,7 +100,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8078619294134710420}
-  - component: {fileID: 50794389862416206}
   m_Layer: 0
   m_Name: RoomBoss
   m_TagString: Untagged
@@ -128,22 +127,6 @@ Transform:
   - {fileID: 6738359339038802580}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &50794389862416206
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2803972240278522408}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e256450359ed7e540bc2311429230844, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  topDoor: {fileID: 0}
-  bottomDoor: {fileID: 0}
-  leftDoor: {fileID: 0}
-  rightDoor: {fileID: 0}
 --- !u!1 &3085364948694017167
 GameObject:
   m_ObjectHideFlags: 0

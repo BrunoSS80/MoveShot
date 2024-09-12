@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Room : MonoBehaviour
 {
-    [SerializeField] GameObject topDoor, bottomDoor, leftDoor, rightDoor;
+    [SerializeField] GameObject topDoor, bottomDoor, leftDoor, rightDoor, bossDoor;
 
     public Vector2Int RoomIndex {get; set;}
 
@@ -20,6 +20,9 @@ public class Room : MonoBehaviour
         }
         if(direction == Vector2Int.right){
             rightDoor.SetActive(true);
+        }
+        if(direction == Vector2Int.one){
+            bossDoor.SetActive(true);
         }
     }
 

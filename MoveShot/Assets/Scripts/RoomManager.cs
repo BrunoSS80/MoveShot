@@ -56,7 +56,8 @@ public class RoomManager : MonoBehaviour
 
     private void BossRoom(){
         lastRoom = roomObjects.Last();
-        
+        Room roomBoss = lastRoom.GetComponent<Room>();
+        roomBoss.OpenDoor(Vector2Int.one);
     }
 
     private void StartRoomGenerationFromRoom(Vector2Int roomIndex){
