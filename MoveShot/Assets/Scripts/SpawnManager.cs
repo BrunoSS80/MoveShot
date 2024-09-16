@@ -18,13 +18,21 @@ public class SpawnManager : MonoBehaviour
     public int maxObstacles;
     private int numObstacles;
     public bool cleanedRoom = false;
+    public GameObject markSpawn;
+    public List<Vector2> positions;
+    public List<GameObject> marks;
     void Start()
     {
         boxCollider = GetComponent<Collider2D>();
+        numEnemys = Random.Range(minEnemys, maxEnemys);
         StartCoroutine(LateStart(0.1f));
     }
     
     IEnumerator LateStart(float timeWait){
+        for(int i = 0; i < numEnemys; i++){
+        Vector2 positionMark = SpawnPos();
+        positions.Add(positionMark);
+        }
         yield return new WaitForSeconds(timeWait);
         SpawnObstacles();
     }
@@ -44,22 +52,34 @@ public class SpawnManager : MonoBehaviour
         Vector2 spawnPos = new Vector2(px, py);
         return spawnPos;
     }
+    void SpawnMark(){
+        for(int x = 0; x < numEnemys; x++){
+            var mark = Instantiate(markSpawn, positions[x], markSpawn.transform.rotation);
+            marks.Add(mark);
+        }
+    }
 
     void SpawnEnemys(){
-        numEnemys = Random.Range(minEnemys, maxEnemys);
         for(int i = 0; i < numEnemys; i++){
-            Vector2 position = SpawnPos();
             int index = Random.Range(0, enemys.Length);
-            var spawnEnemys = Instantiate(enemys[index], position, enemys[index].transform.rotation);
+            var spawnEnemys = Instantiate(enemys[index], positions[i], enemys[index].transform.rotation);
             enemysAlive.Add(1);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.CompareTag("Player") && enemysInvoked == false){
-            LateStart(1.0f);
-            SpawnEnemys();
+            StartCoroutine(WaitSeconds(1.5f, 2));
         }
+    }
+    IEnumerator WaitSeconds(float timeStart, float timeDestroy){
+        yield return new WaitForSeconds(timeStart);
+        SpawnMark();
+        yield return new WaitForSeconds(timeDestroy);
+        for(int i = 0; i < marks.Count; i++){
+        Destroy(marks[i]);
+        }
+        SpawnEnemys();
         enemysInvoked = true;
     }
 
