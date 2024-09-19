@@ -19,8 +19,9 @@ public class SpawnManager : MonoBehaviour
     private int numObstacles;
     public bool cleanedRoom = false;
     public GameObject markSpawn;
-    public List<Vector2> positions;
+    public List<Vector2> positionsMarks;
     public List<GameObject> marks;
+    public ParticleSystem particlesMark;
     void Start()
     {
         boxCollider = GetComponent<Collider2D>();
@@ -31,7 +32,7 @@ public class SpawnManager : MonoBehaviour
     IEnumerator LateStart(float timeWait){
         for(int i = 0; i < numEnemys; i++){
         Vector2 positionMark = SpawnPos();
-        positions.Add(positionMark);
+        positionsMarks.Add(positionMark);
         }
         yield return new WaitForSeconds(timeWait);
         SpawnObstacles();
@@ -54,7 +55,7 @@ public class SpawnManager : MonoBehaviour
     }
     void SpawnMark(){
         for(int x = 0; x < numEnemys; x++){
-            var mark = Instantiate(markSpawn, positions[x], markSpawn.transform.rotation);
+            var mark = Instantiate(markSpawn, positionsMarks[x], markSpawn.transform.rotation);
             marks.Add(mark);
         }
     }
@@ -62,7 +63,7 @@ public class SpawnManager : MonoBehaviour
     void SpawnEnemys(){
         for(int i = 0; i < numEnemys; i++){
             int index = Random.Range(0, enemys.Length);
-            var spawnEnemys = Instantiate(enemys[index], positions[i], enemys[index].transform.rotation);
+            var spawnEnemys = Instantiate(enemys[index], positionsMarks[i], enemys[index].transform.rotation);
             enemysAlive.Add(1);
         }
     }
@@ -77,6 +78,7 @@ public class SpawnManager : MonoBehaviour
         SpawnMark();
         yield return new WaitForSeconds(timeDestroy);
         for(int i = 0; i < marks.Count; i++){
+        Instantiate(particlesMark, positionsMarks[i], Quaternion.identity);
         Destroy(marks[i]);
         }
         SpawnEnemys();
