@@ -17,7 +17,7 @@ public class SpawnManager : MonoBehaviour
     public int minObstacles;
     public int maxObstacles;
     private int numObstacles;
-    public bool cleanedRoom = false;
+    public bool cleanedRoom, spawningEnemys = false;
     public GameObject markSpawn;
     public List<Vector2> positionsMarks;
     public List<GameObject> marks;
@@ -82,6 +82,7 @@ public class SpawnManager : MonoBehaviour
         Destroy(marks[i]);
         }
         SpawnEnemys();
+        spawningEnemys = true;
         enemysInvoked = true;
     }
 

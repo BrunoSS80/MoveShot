@@ -856,11 +856,11 @@ MonoBehaviour:
   minObstacles: 1
   maxObstacles: 6
   cleanedRoom: 0
+  spawningEnemys: 0
   markSpawn: {fileID: 2249959214270021294, guid: 1c2070aa34bdcd648b29dd8638d4a6e7, type: 3}
-  positions: []
+  positionsMarks: []
   marks: []
   particlesMark: {fileID: 6535560911202935399, guid: c6ed10377cd599749b65a1be9db49184, type: 3}
-  positionMarks: []
 --- !u!1 &5255309498987972225
 GameObject:
   m_ObjectHideFlags: 0

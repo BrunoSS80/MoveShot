@@ -19,7 +19,7 @@ public class Doors : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if(other.CompareTag("Player") && spawnManager.cleanedRoom == true) {
+        if(other.CompareTag("Player") && spawnManager.cleanedRoom == true && spawnManager.spawningEnemys == true) {
             StartCoroutine(ChangeTimer());
         }
     }
