@@ -47,8 +47,7 @@ public class EnemyMoviment : MonoBehaviour
         Vector2 playerPos = player.transform.position;
         yield return new WaitForSeconds(0.5f);
         transform.position = Vector2.MoveTowards(transform.position, playerPos, distanceDash / 2.0f);
-        speedEnemy = 3.5f;
-        Debug.Log("Foi");
+        speedEnemy = 2.5f;
     }
     
 }

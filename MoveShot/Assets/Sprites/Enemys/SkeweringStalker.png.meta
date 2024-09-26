@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 68ae31e8c24269443b9365f72c20d413
+guid: 0107b8d955b08ea4c83a25fb189700a2
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,54 +110,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: WarpSkull_0
+      name: SkeweringStalker_0
       rect:
         serializedVersion: 2
         x: 3
         y: 0
-        width: 11
-        height: 15
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c124d8a9ed8779f4589742a773bba738
-      internalID: 381311732
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: WarpSkull_1
-      rect:
-        serializedVersion: 2
-        x: 19
-        y: 0
-        width: 11
-        height: 15
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b41679a168a513e44acefe84ae57f2be
-      internalID: 1156667831
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: WarpSkull_2
-      rect:
-        serializedVersion: 2
-        x: 35
-        y: 0
-        width: 11
+        width: 10
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -166,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 14c32f6a5d119a6489b9f555d0ef2d30
-      internalID: 106369837
+      spriteID: 958841c1ea2e77c45849662eca5005d0
+      internalID: -1875053298
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WarpSkull_3
+      name: SkeweringStalker_1
       rect:
         serializedVersion: 2
-        x: 51
+        x: 19
         y: 0
-        width: 11
-        height: 15
+        width: 10
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,8 +145,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7b7fe6c5e9afa144da1350987ed767b1
-      internalID: -500188245
+      spriteID: dc7c41da1a5eb8a44834e1f8fd6aded8
+      internalID: -250464797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SkeweringStalker_2
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 0
+        width: 10
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10e5567ff93700e4bb59d19a039f51d6
+      internalID: -1736317267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SkeweringStalker_3
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 0
+        width: 10
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3000cec3458d38c498cb72195ff1903a
+      internalID: 2075317811
       vertices: []
       indices: 
       edges: []
@@ -204,10 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      WarpSkull_0: 381311732
-      WarpSkull_1: 1156667831
-      WarpSkull_2: 106369837
-      WarpSkull_3: -500188245
+      SkeweringStalker_0: -1875053298
+      SkeweringStalker_1: -250464797
+      SkeweringStalker_2: -1736317267
+      SkeweringStalker_3: 2075317811
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
