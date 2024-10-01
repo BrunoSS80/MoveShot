@@ -35,23 +35,20 @@ public class EM_MutipleBullet : MonoBehaviour
     for(int y = 0; y < height; y++){
         for(int x = 0; x < width; x++){
             Color pixelColor = patternTexture.GetPixel(x,y);
-
+            
             if(pixelColor == Color.black){
                 Vector2 position = barrel.position + (new Vector3(x - width/2, y - height/2));
                 direction = new Vector2(x,y) - centerMatriz;
-
-                //Rigidbody2D projectile = Instantiate(projectilePrefab, position, barrel.rotation).GetComponent<Rigidbody2D>();
-                Rigidbody2D projectile = Instantiate(projectilePrefab, position, Quaternion.identity).GetComponent<Rigidbody2D>();
+                Rigidbody2D projectile = Instantiate(projectilePrefab, position, barrel.rotation).GetComponent<Rigidbody2D>();
                 projectile.velocity = direction * speedProject;
-                
-
-                /*
-                projectile.velocity = direction * speedProject * Time.deltaTime;
                 weaponAnimator.SetTrigger("Fire");
-                */
             }
         }
     }
+    }
+
+    public void BulletTrail(){
+        
     }
 
     private bool PodeAtirar(){
