@@ -1,28 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using JetBrains.Annotations;
-using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class EM_MutipleBullet : MonoBehaviour
 {
     [SerializeField] private Texture2D patternTexture;
     [SerializeField] private GameObject projectilePrefab;
-    private EM_WeaponScript eM_WeaponScript;
+    [SerializeField] private GameObject projectMoving;
+    [SerializeField] private GameObject aimBoss;
     [SerializeField] private Transform barrel;
     public float fireRate;
     private float fireTimer;
     private Animator weaponAnimator;
     public Vector2 direction;
-    
+    private Transform startPosAim, endPosAim;
+    public Transform[] waypoints;
+    private int currentStartPoint;
+    private float startTime;
+    public float speed;
+    private float journeyLenght;
     private void Start() {
         weaponAnimator = GetComponent<Animator>();
+        currentStartPoint = 0;
+        SetPoints();
     }
 
     private void Update() {
         if(PodeAtirar()){
             BulletInstatiate();
+            BulletTrail();
+        }
+        float distCovered = (Time.time - startTime) * speed;
+        float fracJourney = distCovered / journeyLenght;
+        aimBoss.transform.position = Vector2.Lerp(startPosAim.position, endPosAim.position, fracJourney);
+        if(fracJourney >= 1 && currentStartPoint + 1 < waypoints.Length){
+            currentStartPoint++;
+            SetPoints();
         }
     }
     public void BulletInstatiate(){
@@ -47,11 +61,19 @@ public class EM_MutipleBullet : MonoBehaviour
     }
     }
 
-    public void BulletTrail(){
-        
-    }
-
     private bool PodeAtirar(){
         return Time.time > fireTimer;
+    }
+    private void SetPoints(){
+        startPosAim = waypoints[currentStartPoint];
+        endPosAim = waypoints[currentStartPoint + 1];
+        startTime = Time.time;
+        journeyLenght = Vector2.Distance(startPosAim.position, endPosAim.position);
+    }
+
+    private void BulletTrail(){
+        while(true){
+            Instantiate(projectMoving, aimBoss.transform.position, barrel.rotation);
+        }
     }
 }
