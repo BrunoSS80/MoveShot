@@ -285,7 +285,7 @@ Transform:
   m_GameObject: {fileID: 418033606}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.35, y: 0.399, z: 0}
+  m_LocalPosition: {x: 0.35, y: 0.512, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -623,6 +623,7 @@ MonoBehaviour:
   aimBoss: {fileID: 281658211}
   barrel: {fileID: 1351390380}
   fireRate: 2
+  fireTimer: 0
   direction: {x: 0, y: 0}
   waypoints:
   - {fileID: 1218978092}
@@ -630,6 +631,8 @@ MonoBehaviour:
   - {fileID: 1218978092}
   - {fileID: 1431569947}
   - {fileID: 1218978092}
+  - {fileID: 418033607}
+  randomHability: 0
   speed: 3
   spawnBullet: 1
 --- !u!1 &1218978091
@@ -735,7 +738,7 @@ Transform:
   m_GameObject: {fileID: 1431569946}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.35, y: -0.563, z: 0}
+  m_LocalPosition: {x: 0.35, y: -0.649, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

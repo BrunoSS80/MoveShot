@@ -12,12 +12,13 @@ public class EM_MutipleBullet : MonoBehaviour
     [SerializeField] private GameObject aimBoss;
     [SerializeField] private Transform barrel;
     public float fireRate;
-    private float fireTimer;
+    public float fireTimer;
     private Animator weaponAnimator;
     public Vector2 direction;
     private Transform startPosAim, endPosAim;
     public Transform[] waypoints;
-    private int currentStartPoint;
+    private int currentStartPoint, timesExecuted;
+    public int randomHability;
     private float startTime;
     public float speed, spawnBullet;
     private float journeyLenght;
@@ -28,17 +29,18 @@ public class EM_MutipleBullet : MonoBehaviour
     }
 
     private void Update() {
-        if(PodeAtirar()){
-            BulletInstatiate();
-        }
-            //for(int i = 0; i < 4; i++){
+        //if(PodeAtirar()){
+            randomHability = Random.Range(0,2);
+            if(randomHability == 0){
+                BulletInstatiate();
+            }
+            else if(randomHability == 1 && timesExecuted <= 4){
                 spawnBullet -= Time.deltaTime * 6;
                 float distCovered = (Time.time - startTime) * speed;
                 float fracJourney = distCovered / journeyLenght;
 
                 aimBoss.transform.position = Vector2.Lerp(startPosAim.position, endPosAim.position, fracJourney);
                 
-
                     if(fracJourney >= 1 && currentStartPoint + 1 < waypoints.Length){
                         currentStartPoint++;
                         SetPoints();
@@ -47,20 +49,22 @@ public class EM_MutipleBullet : MonoBehaviour
                         spawnBullet = 1;
                         Instantiate(projectMoving, aimBoss.transform.position, barrel.rotation);
                     }
-                    if(currentStartPoint == 4){
+                    if(currentStartPoint >= 4){
                         currentStartPoint = 0;
+                        timesExecuted++;
                     }
-            //}
             }
+            //timesExecuted = 0;
+        //}
+    }
         
     
     public void BulletInstatiate(){
-    //for(int i = 0; i < 5; i++){
+        if(timesExecuted <= 2){
         float speedProject = 1.0f;
         int width = patternTexture.width;
         int height = patternTexture.height;
         Vector2 centerMatriz = new Vector2(width/2, height/2);
-        fireTimer = Time.time + fireRate;
 
         for(int y = 0; y < height; y++){
             for(int x = 0; x < width; x++){
@@ -75,7 +79,9 @@ public class EM_MutipleBullet : MonoBehaviour
                 }
             }
         }
-    //}
+        }
+        timesExecuted++;
+        fireTimer = Time.time + fireRate;
     }
 
     private bool PodeAtirar(){
@@ -89,26 +95,5 @@ public class EM_MutipleBullet : MonoBehaviour
     }
 
     private void BulletTrail(){
-    for(int i = 0; i < 4; i++){
-        spawnBullet -= Time.deltaTime * 6;
-        float distCovered = (Time.time - startTime) * speed;
-        float fracJourney = distCovered / journeyLenght;
-
-        aimBoss.transform.position = Vector2.Lerp(startPosAim.position, endPosAim.position, fracJourney);
-        fireTimer = Time.time + fireRate;
-
-            if(fracJourney >= 1 && currentStartPoint + 1 < waypoints.Length){
-                currentStartPoint++;
-                SetPoints();
-            }
-            if(spawnBullet <= 0){
-                spawnBullet = 1;
-                Instantiate(projectMoving, aimBoss.transform.position, barrel.rotation);
-            }
-            if(currentStartPoint == 4){
-                currentStartPoint = 0;
-            }
-    }
-    fireTimer = Time.time + fireRate;
     }
 }
