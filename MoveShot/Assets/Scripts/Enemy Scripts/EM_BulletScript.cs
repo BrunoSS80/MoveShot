@@ -1,12 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EM_BulletScript : MonoBehaviour
 {
-   public float lifeTime;
+    public float lifeTime;
     public float bulletSpeed;
     public int em_DamageBullet;
+    public int direction;
 
     private BoxCollider2D em_BulletColider;
     private Animator em_BulletAnimator;
@@ -23,8 +25,14 @@ public class EM_BulletScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector2.left * bulletSpeed * Time.deltaTime);
-        em_BulletAnimator.SetTrigger("Fire");
+        if(direction == 1){
+            transform.Translate(Vector2.left * bulletSpeed * Time.deltaTime);
+            em_BulletAnimator.SetTrigger("Fire");
+        }
+        if(direction == 2){
+            transform.Translate(Vector2.right * bulletSpeed * Time.deltaTime);
+            em_BulletAnimator.SetTrigger("Fire");
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other) {
