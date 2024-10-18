@@ -38,7 +38,7 @@ public class SpawnManager : MonoBehaviour
         SpawnObstacles();
     }
     private void Update() {
-        if(enemysAlive.Count <= 0){
+        if(enemysAlive.Count <= 0 && spawningEnemys == true){
             cleanedRoom = true;
         }
         else{
@@ -70,8 +70,7 @@ public class SpawnManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.CompareTag("Player") && enemysInvoked == false && spawningEnemys == false){
-            spawningEnemys = true;
-            enemysInvoked = true;
+            
             StartCoroutine(WaitSeconds(1.5f, 2));
         }
     }
@@ -84,6 +83,8 @@ public class SpawnManager : MonoBehaviour
         Destroy(marks[i]);
         }
         SpawnEnemys();
+        spawningEnemys = true;
+        enemysInvoked = true;
     }
 
     void SpawnObstacles(){
