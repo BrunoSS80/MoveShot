@@ -166,8 +166,8 @@ MonoBehaviour:
   speed: 5
   heath: 100
   rollSpeed: 300
-  coolDownRoll: 1
-  resetRoll: 1
+  coolDownRoll: 0.5
+  resetRoll: 0.5
   canMove: 1
   colorResetRoll: {r: 0.31318974, g: 0.64825875, b: 0.9622642, a: 1}
 --- !u!95 &7909555816625244281

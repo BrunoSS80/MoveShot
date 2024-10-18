@@ -843,8 +843,8 @@ MonoBehaviour:
   - {fileID: 6151260697931637243, guid: 71422ba47091e4643992a1a5eeac6996, type: 3}
   enemysAlive: 
   roomCurrent: {fileID: 0}
-  minEnemys: 0
-  maxEnemys: 0
+  minEnemys: 3
+  maxEnemys: 7
   enemysInvoked: 0
   obstacles:
   - {fileID: 5749942695367145529, guid: 484da83f52d338c44be2fba3299aaa09, type: 3}
@@ -853,8 +853,8 @@ MonoBehaviour:
   - {fileID: 1825282410423731087, guid: 7713e4011829c444793a9a8559ca3dc9, type: 3}
   - {fileID: 8879237335213508802, guid: 593d6b4f023885b4ba631160dc002d9d, type: 3}
   - {fileID: 2413819769298340768, guid: 7cb8f069e77acc243b2b08768515c509, type: 3}
-  minObstacles: 0
-  maxObstacles: 0
+  minObstacles: 1
+  maxObstacles: 4
   cleanedRoom: 0
   spawningEnemys: 0
   markSpawn: {fileID: 2249959214270021294, guid: 1c2070aa34bdcd648b29dd8638d4a6e7, type: 3}
