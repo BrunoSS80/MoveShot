@@ -17,7 +17,7 @@ public class SpawnManager : MonoBehaviour
     public int minObstacles;
     public int maxObstacles;
     private int numObstacles;
-    public bool cleanedRoom, spawningEnemys = false;
+    public bool cleanedRoom, spawningEnemys, marksSpawned = false;
     public GameObject markSpawn;
     public List<Vector2> positionsMarks;
     public List<GameObject> marks;
@@ -69,8 +69,8 @@ public class SpawnManager : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if(other.CompareTag("Player") && enemysInvoked == false && spawningEnemys == false){
-            
+        if(other.CompareTag("Player") && enemysInvoked == false && spawningEnemys == false && marksSpawned == false){
+            marksSpawned = true;
             StartCoroutine(WaitSeconds(1.5f, 2));
         }
     }

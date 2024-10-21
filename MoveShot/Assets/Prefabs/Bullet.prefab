@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 3
-  bulletSpeed: 10
+  bulletSpeed: 8
   damageBullet: 1
 --- !u!61 &8266341806497904385
 BoxCollider2D:

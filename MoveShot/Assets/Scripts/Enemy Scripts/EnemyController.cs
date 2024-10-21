@@ -18,7 +18,6 @@ public class EnemyController : MonoBehaviour
         StartCoroutine(Damage());
 
         if(heath < 1){
-            
             Destroy(gameObject);
         }
     }

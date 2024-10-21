@@ -844,7 +844,7 @@ MonoBehaviour:
   enemysAlive: 
   roomCurrent: {fileID: 0}
   minEnemys: 3
-  maxEnemys: 7
+  maxEnemys: 6
   enemysInvoked: 0
   obstacles:
   - {fileID: 5749942695367145529, guid: 484da83f52d338c44be2fba3299aaa09, type: 3}
@@ -857,6 +857,7 @@ MonoBehaviour:
   maxObstacles: 4
   cleanedRoom: 0
   spawningEnemys: 0
+  marksSpawned: 0
   markSpawn: {fileID: 2249959214270021294, guid: 1c2070aa34bdcd648b29dd8638d4a6e7, type: 3}
   positionsMarks: []
   marks: []

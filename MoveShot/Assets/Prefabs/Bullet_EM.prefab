@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 3
-  bulletSpeed: 10
+  bulletSpeed: 8
   em_DamageBullet: 1
   direction: 1
 --- !u!95 &5899324302440577

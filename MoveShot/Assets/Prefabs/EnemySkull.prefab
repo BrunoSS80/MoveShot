@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 680788274020936463}
   - component: {fileID: 7199230821234475912}
   - component: {fileID: 1394936322879822669}
-  - component: {fileID: 2784362505108956531}
+  - component: {fileID: 1943397358172612335}
   m_Layer: 0
   m_Name: HandGun
   m_TagString: Untagged
@@ -159,7 +159,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2784362505108956531
+--- !u!114 &1943397358172612335
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,40 +168,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 338985569839196589}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbb5d52ce4deb4e4786ac251f35b53ba, type: 3}
+  m_Script: {fileID: 11500000, guid: 27b72e9bfc9583f49a428d4583d61a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   patternTexture: {fileID: 2800000, guid: 9745a4fa6657af54ab04b87d5b25e433, type: 3}
   projectilePrefab: {fileID: 1476181432565153545, guid: ea02e8e8a111d9d478d8d26a95e7a91c, type: 3}
-  projectMoving: {fileID: 2926802606502889507}
-  projectMovingLeft: {fileID: 2926802606502889507}
-  aimBoss: {fileID: 509990332844375059}
-  aimBossLeft: {fileID: 509990332844375059}
   barrel: {fileID: 5919518966352305437}
-  barrelInverse: {fileID: 5919518966352305437}
-  fireRate: 1
+  fireRate: 0.7
   fireTimer: 0
   direction: {x: 0, y: 0}
-  waypoints:
-  - {fileID: 5939618255982052960}
-  - {fileID: 5997308294860900982}
-  - {fileID: 5939618255982052960}
-  - {fileID: 5997308294860900982}
-  - {fileID: 5939618255982052960}
-  - {fileID: 5997308294860900982}
-  wayPointsLeft:
-  - {fileID: 5939618255982052960}
-  - {fileID: 5997308294860900982}
-  - {fileID: 5939618255982052960}
-  - {fileID: 5997308294860900982}
-  - {fileID: 5939618255982052960}
-  - {fileID: 5997308294860900982}
-  currentStartPoint: 0
-  timesExecuted: 0
-  currentStartPointLeft: 0
-  randomHability: 0
-  speed: 0
-  spawnBullet: 0
 --- !u!1 &509990332844375059
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,7 +508,6 @@ Transform:
   - {fileID: 5939618255982052960}
   - {fileID: 5997308294860900982}
   - {fileID: 5561669392505622069}
-  - {fileID: 9081790602011088338}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5074615540525568125
@@ -731,83 +705,3 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7168758960597569176}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &8798697271143529042
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 9081790602011088338}
-  - component: {fileID: 6199395765763792440}
-  - component: {fileID: 6813509969833721568}
-  m_Layer: 0
-  m_Name: HitPlayer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &9081790602011088338
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8798697271143529042}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7168758960597569176}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6199395765763792440
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8798697271143529042}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ede2cd5af4f7fb4a93d42907235bb43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!70 &6813509969833721568
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8798697271143529042}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.65, y: 0.85}
-  m_Direction: 0
