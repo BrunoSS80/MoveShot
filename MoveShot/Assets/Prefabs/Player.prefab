@@ -164,6 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  imageLife: {fileID: 0}
   heath: 45
   rollSpeed: 500
   coolDownRoll: 0.5

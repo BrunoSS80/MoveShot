@@ -7,20 +7,23 @@ public class EnemyController : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
     public int heath;
-    
+    public Image imageLifeBoss;
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        imageLifeBoss = GameObject.Find("LifeBoss").GetComponent<Image>();
     }
 
 
     public void DamageEnemy(int damageBullet){
         heath -= damageBullet;
         StartCoroutine(Damage());
-
-        if(heath < 1){
-            Destroy(gameObject);
-        }
+            if(gameObject.CompareTag("Boss")){
+                imageLifeBoss.fillAmount -= 0.04f;
+            }
+            if(heath < 1){
+                Destroy(gameObject);
+            }
     }
 
     IEnumerator Damage(){

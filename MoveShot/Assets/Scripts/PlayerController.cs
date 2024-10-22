@@ -1,10 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using System.Text;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.Diagnostics;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,6 +11,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 moveDirection;
     private Animator playerAnimator;
+    public Image imageLife;
     public int heath;
     private SpriteRenderer spriteRenderer;
     public float rollSpeed = 75f;
@@ -22,6 +20,7 @@ public class PlayerController : MonoBehaviour
     public float resetRoll = 3f;
     private bool canRoll = true;
     public bool canMove = true;
+    private Canvas canvasEnd;
     private enum State{
         Normal,
         Rolling,
@@ -35,6 +34,7 @@ public class PlayerController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         colliderPlayer = GetComponent<CapsuleCollider2D>();
         state = State.Normal;
+        canvasEnd = GameObject.Find("Retry").GetComponent<Canvas>();
     }
 
     private void Update() {
@@ -94,8 +94,10 @@ public class PlayerController : MonoBehaviour
     public void DamagePlayer(int em_damageBullet){
         heath -= em_damageBullet;
         StartCoroutine(DamagePlayer());
-
+        imageLife.fillAmount -= 0.0222f;
+        
         if(heath <1){
+            canvasEnd.gameObject.GetComponent<Canvas>().enabled = true;
             Destroy(gameObject);
         }
     }
