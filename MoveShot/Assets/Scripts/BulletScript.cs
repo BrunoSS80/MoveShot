@@ -24,7 +24,7 @@ public class BulletScript : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other) {
-        if(other.CompareTag("Enemy")){
+        if(other.CompareTag("Enemy") || other.CompareTag("Boss")){
             //identificando com qual inimigo colidiu e pegando seu "EnemyController"
             EnemyController enemy = other.gameObject.GetComponent<EnemyController>();
 

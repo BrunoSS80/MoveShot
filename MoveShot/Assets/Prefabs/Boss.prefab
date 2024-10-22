@@ -80,7 +80,7 @@ GameObject:
   - component: {fileID: 3055152565815182250}
   m_Layer: 0
   m_Name: Boss
-  m_TagString: Enemy
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -257,7 +257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f0a7048434d8c140bb160454d86e93d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedEnemy: 0.5
+  speedEnemy: 0.75
   distanceDash: 0.5
   detectionController: {fileID: 0}
   player: {fileID: 0}
@@ -273,7 +273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34128b89db20fda4b8c510f5615a27fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heath: 12
+  heath: 20
 --- !u!114 &3055152565815182250
 MonoBehaviour:
   m_ObjectHideFlags: 0
