@@ -11,6 +11,7 @@ public class EM_WeaponScript : MonoBehaviour
     private float fireTimer;   //Controle da cadencia
 
     private Animator weaponAnimator;
+    public AudioSource audioShotEM;
     
     void Start()
     {
@@ -25,11 +26,13 @@ public class EM_WeaponScript : MonoBehaviour
 
     void Atirando(){
         if(PodeAtirar()){
+            audioShotEM.Play();
             Tiro();
         }
     }
 
     void Tiro(){
+        fireRate = Random.Range(0.7f, 3);
         fireTimer = Time.time + fireRate;
         Instantiate(bullet, barrel.position, barrel.rotation);
         weaponAnimator.SetTrigger("Fire");

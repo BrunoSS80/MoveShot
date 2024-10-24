@@ -11,7 +11,7 @@ public class EM_MultipleBulletsSkull : MonoBehaviour
     public float fireTimer;
     private Animator weaponAnimator;
     public Vector2 direction;
-    
+    public AudioSource audioShotSkull;
 
     private void Start() {
         weaponAnimator = GetComponent<Animator>();
@@ -19,7 +19,8 @@ public class EM_MultipleBulletsSkull : MonoBehaviour
 
     private void Update() {
         if(Time.time >= fireTimer + (1/ fireRate)){
-                BulletInstatiate();
+            audioShotSkull.Play();
+            BulletInstatiate();
             
         }
     }
@@ -44,5 +45,6 @@ public class EM_MultipleBulletsSkull : MonoBehaviour
                     }
                 }
         fireTimer = Time.time;
+        fireRate = Random.Range(0.3f, 1);
         }
     }

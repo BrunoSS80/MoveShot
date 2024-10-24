@@ -12,6 +12,7 @@ public class WeaponScript : MonoBehaviour
     private float fireTimer;   //Controle da cadencia
 
     private Animator weaponAnimator;
+    public AudioSource audioShot;
     
     void Start()
     {
@@ -26,6 +27,7 @@ public class WeaponScript : MonoBehaviour
 
     void Atirando(){
         if(Input.GetMouseButton(0) && PodeAtirar()){
+            audioShot.Play();
             Tiro();
         }
     }
