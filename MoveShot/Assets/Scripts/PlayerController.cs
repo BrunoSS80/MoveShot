@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     private bool canRoll = true;
     public bool canMove = true;
     private Canvas canvasEnd;
+    public AudioSource audioResetRoll;
     private enum State{
         Normal,
         Rolling,
@@ -138,6 +139,7 @@ public class PlayerController : MonoBehaviour
         }
     }
     private void ResetRoll(){
+        audioResetRoll.Play();
         StartCoroutine(ResetRollC());
     }
     IEnumerator ResetRollC(){
