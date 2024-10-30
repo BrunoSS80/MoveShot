@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     public int heath;
     private SpriteRenderer spriteRenderer;
     public float rollSpeed = 75f;
-    private Vector3 rollDir;
+    public Vector3 rollDir;
     public float coolDownRoll = 3f;
     public float resetRoll = 3f;
     private bool canRoll = true;

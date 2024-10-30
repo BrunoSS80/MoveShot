@@ -843,8 +843,8 @@ MonoBehaviour:
   - {fileID: 6151260697931637243, guid: 71422ba47091e4643992a1a5eeac6996, type: 3}
   enemysAlive: 
   roomCurrent: {fileID: 0}
-  minEnemys: 3
-  maxEnemys: 6
+  minEnemys: 1
+  maxEnemys: 5
   enemysInvoked: 0
   obstacles:
   - {fileID: 5749942695367145529, guid: 484da83f52d338c44be2fba3299aaa09, type: 3}

@@ -23,6 +23,7 @@ public class EM_MutipleBullet : MonoBehaviour
     private float startTime;
     public float speed, spawnBullet;
     private float journeyLenght, journeyLenghtLeft;
+    public AudioSource audioExplosion, audioShot;
     private void Start() {
         weaponAnimator = GetComponent<Animator>();
         currentStartPoint = 0;
@@ -54,6 +55,7 @@ public class EM_MutipleBullet : MonoBehaviour
                         Instantiate(projectMoving, aimBoss.transform.position, barrel.rotation);
                         barrelInverse.rotation = Quaternion.Inverse(barrel.rotation);
                         Instantiate(projectMovingLeft, aimBossLeft.transform.position, barrelInverse.rotation);
+                        audioShot.Play();
                     }
                     if(currentStartPoint >= 4){
                         currentStartPoint = 0;
@@ -77,6 +79,7 @@ public class EM_MutipleBullet : MonoBehaviour
             int width = patternTexture.width;
             int height = patternTexture.height;
             Vector2 centerMatriz = new Vector2(width/2, height/2);
+            audioExplosion.Play();
 
                 for(int y = 0; y < height; y++){
                     for(int x = 0; x < width; x++){
